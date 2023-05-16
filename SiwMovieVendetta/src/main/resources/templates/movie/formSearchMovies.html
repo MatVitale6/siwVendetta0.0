@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cerca Film</title>
+	<link rel="stylesheet" href="/css/stile.css"/>
+</head>
+
+<body>
+	<img src="/images/logo2.png" width="30%" class="center"/>
+	<h1>Cerca film per anno</h1>
+	<form th:action="@{/searchMovies}" method="post">
+		<div>Anno: <input type="text" th:value="${year}" name="year" />
+		</div>
+		<div><button type="submit">Conferma</button></div>
+	</form>
+</body>
+
+</html>
