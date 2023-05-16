@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Film</title>
+    <img src="/images/logo2.png" width="20%"/>
+    <link rel="stylesheet" href="/css/stile.css" />
+  </head>
+
+  <body>
+    <div th:if="${movies.isEmpty()}"> 
+		<a href="formNewMovie">Non ci sono film nel sistema, clicca qui per aggiungerne uno</a>
+		</div>
+    <ul>
+      <li th:each="movie : ${movies}">
+        <a th:href="@{'/movies' + '/' + ${movie.id}}"
+           th:text="${movie.title} + ' (' + ${movie.year} + ')'">Up! (2000)</a>
+      </li>
+    </ul>
+  </body>
+</html>
