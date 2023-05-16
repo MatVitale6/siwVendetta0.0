@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Film</title>
+    <img src="/images/logo2.png" width="20%"/>
+    <link rel="stylesheet" href="/css/stile.css" />
+  </head>
+
+  <body>
+    <div th:if="${artists.isEmpty()}"> 
+		<a href="formNewArtist">Non ci sono film nel sistema, clicca qui per aggiungerne uno</a>
+		</div>
+    <ul>
+      <li th:each="artist : ${artists}">
+        <a th:href="@{'/artists' + '/' + ${artist.id}}"
+           th:text="${artist.name} + ' (' + ${artist.nationality} + ')'">Up! (2000)</a>
+      </li>
+    </ul>
+  </body>
+</html>
