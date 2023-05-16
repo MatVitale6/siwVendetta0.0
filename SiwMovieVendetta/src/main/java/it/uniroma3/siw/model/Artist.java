@@ -11,6 +11,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+
 
 
 
@@ -21,11 +24,13 @@ public class Artist {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotBlank
 	private String name; //si intende nome d'arte
 	
+	@NotBlank
 	private String surname;
 	
-	
+	@Past
 	private LocalDate dateOfBirth;
 	
 	

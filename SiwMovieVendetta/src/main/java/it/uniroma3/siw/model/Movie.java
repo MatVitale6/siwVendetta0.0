@@ -11,6 +11,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 /* Con la notazione @Entity comunico al framework che bisogna creare una tabella nel DB;
  * Il framework cerca tutte le classi @Entity e per ciascuna di 
@@ -22,7 +26,12 @@ public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@NotBlank
     private String title;
+	@NotNull
+	@Min(1900)
+	@Max(2023)
     private Integer year;
     private String urlImage;
     

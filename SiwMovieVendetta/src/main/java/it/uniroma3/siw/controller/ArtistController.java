@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.model.Artist;
 import it.uniroma3.siw.repository.ArtistRepository;
+import it.uniroma3.siw.validators.ArtistValidator;
+import jakarta.validation.Valid;
 
 //modifica
 
@@ -19,6 +21,7 @@ import it.uniroma3.siw.repository.ArtistRepository;
 public class ArtistController {
 	
 	@Autowired ArtistRepository artistRepository;
+	@Autowired ArtistValidator artistValidator;
 	
 	@GetMapping("/indexArtist")
 	public String getIndexArtist () {
@@ -33,17 +36,18 @@ public class ArtistController {
 	
 	
 	@PostMapping("/artists")
-	public String newArtist(@ModelAttribute("artist") Artist artist,BindingResult bindingResult, Model model) {
+	public String newArtist(@Valid @ModelAttribute("artist") Artist artist,BindingResult bindingResult, Model model) {
 		/* Se la richiesta può essere soddisfatta entro nell'if altrimenti nel blocco else produco
 		/* un messaggio di errore */
 		
-		if (!artistRepository.existsByNameAndSurname(artist.getName(), artist.getSurname())) { 
+		this.artistValidator.validate(artist, bindingResult);
+		if (!bindingResult.hasErrors()) { 
 			this.artistRepository.save(artist);
 			model.addAttribute("artist", artist);
 			return "/artist/artist.html";
 		} 
 		else {
-			model .addAttribute("messaggioErrore", "Questo film esiste giá"); return "/artist/formNewArtist.html";
+			return "/artist/formNewArtist.html";
 		} 
 	}
 	

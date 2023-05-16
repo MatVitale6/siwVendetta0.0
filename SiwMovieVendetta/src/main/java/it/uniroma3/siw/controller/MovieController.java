@@ -3,6 +3,7 @@ package it.uniroma3.siw.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,12 +14,15 @@ import it.uniroma3.siw.model.Artist;
 import it.uniroma3.siw.model.Movie;
 import it.uniroma3.siw.repository.ArtistRepository;
 import it.uniroma3.siw.repository.MovieRepository;
+import it.uniroma3.siw.validators.MovieValidator;
+import jakarta.validation.Valid;
 
 /* La notazione Controller identifica che MovieController e' un classe Controller */
 @Controller
 public class MovieController {
 	
 	@Autowired MovieRepository movieRepository;
+	@Autowired MovieValidator movieValidator;
 	@Autowired ArtistRepository artistRepository;
 	
 	@GetMapping("/indexMovie")
@@ -33,16 +37,17 @@ public class MovieController {
 	}
 	
 	@PostMapping("/movies")
-	public String newMovie(@ModelAttribute("movie") Movie movie, Model model) {
+	public String newMovie(@Valid @ModelAttribute("movie") Movie movie,BindingResult bindingResult,Model model) {
 		/* Se la richiesta può essere soddisfatta entro nell'if altrimenti nel blocco else produco
 		/* un messaggio di errore */
-		if (!movieRepository.existsByTitleAndYear(movie.getTitle(), movie.getYear())) { 
+		this.movieValidator.validate(movie, bindingResult);
+		if (!bindingResult.hasErrors()) { 
 			this.movieRepository.save(movie);
 			model.addAttribute("movie", movie);
 			return "/movie/movie.html";
 		} 
 		else {
-			model.addAttribute("messaggioErrore", "Questo film esiste già"); return "formNewMovie.html";
+			return "/movie/formNewMovie.html";
 	
 		} 
 	}
