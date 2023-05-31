@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.siw.controller.validator.ArtistValidator;
 import it.uniroma3.siw.model.Artist;
 import it.uniroma3.siw.repository.ArtistRepository;
+import it.uniroma3.siw.service.ArtistService;
 import jakarta.validation.Valid;
 
 //modifica
@@ -20,6 +21,7 @@ import jakarta.validation.Valid;
 @Controller
 public class ArtistController {
 	
+	@Autowired ArtistService artistService;
 	@Autowired ArtistRepository artistRepository;
 	@Autowired ArtistValidator artistValidator;
 	

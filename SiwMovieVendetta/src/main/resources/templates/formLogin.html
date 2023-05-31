@@ -14,13 +14,13 @@
 			<span th:text="${userDetails.username}"></span>
 			<a href="/logout">Logout</a>
 		</div>
-		<div th:unless="${user}">
+		<!--<div th:unless="${user}">
 			<a href="/login">Login</a>
-		</div>
+		</div>-->
 	</header>
 
 	<div>
-		<a href="/"><img src="/images/logo-siw.png" width="50%"/></a>
+		<a href="/"><img src="/images/logo2.png" width="30%"/></a>
 	</div>
 	<h1>Login</h1>
 	<form th:action="@{/login}" method="POST">

@@ -1,0 +1,84 @@
+html {
+  background: url(/images/sfondo2.png) no-repeat center center fixed; 
+  background-size: cover;
+  font-family: 'Century Gothic';
+}
+body{
+	text-align: center;
+}
+h1{
+	color: rgb(255, 128, 0);
+	font-size: 40px;
+	border : thick double;
+	border-color: rgb(128, 128, 192);
+	border-radius: 20px;
+	margin-left: 30%;
+	margin-right: 30%;
+	
+}
+h2{
+	text-decoration: none;
+	color: lightseagreen;
+	font-size: 30px;
+}
+li{
+	font-size: 25px;
+	color: darkgreen;
+}
+form{
+	margin-top: 5%;
+	font-size: 18px;
+	border: thick double;
+	border-color: red;
+	border-radius: 20px;
+	margin-left: 40%;
+	margin-right: 40%;
+	background-color: rgb(255, 255, 128);
+}
+p{
+	margin-left:30%;
+	margin-right:30%;
+	font-size: 20px;
+	font-family: 'Century Gothic';
+	color: darkgreen;
+	border:thick double darkgreen ;
+	border-radius: 20px;
+}
+ul{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	font-size: 25px;
+	color: cadetblue;	
+}
+a:hover{
+	text-decoration: none;
+	font-size: 30px;
+	color: olivedrab;	
+}
+li span{
+	margin-top: 1px;
+	font-size: 30px;
+	color: blue;
+}
+button{
+	opacity: 0.5;
+	color: blueviolet;
+	font-size: 18px;
+	padding:1% 5%;	
+	text-shadow: 1px 1px 1px #000;
+	border-radius: 10px;
+	background-color: lightseagreen;
+	background-image: linear-gradient(to top left, rgba(0,0,0,0.2),rgba(0,0,0,0.2) 30%, rgba(0,0,0,0));
+}
+button:hover{
+	opacity: 1;
+}
+.container1{
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	height: 30%;
+	width: 25%;
+}
