@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,10 +41,13 @@ public class Movie {
     @ManyToMany(mappedBy="actedMovies")
     private List<Artist>actors;
     
+    @OneToMany(mappedBy="film")
+    private List<Review> reviews;
+    
+
 	public Long getId() {
 		return id;
 	}
-    // seguono metodi setter e getter
 	
 	public void setId(Long id) {
 		this.id = id;
@@ -82,6 +85,13 @@ public class Movie {
 
 	public void setActors(List<Artist> actors) {
 		this.actors = actors;
+	}
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 	
 	
