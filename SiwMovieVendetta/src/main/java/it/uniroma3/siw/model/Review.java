@@ -27,7 +27,7 @@ public class Review {
 	@NotNull
 	@Min(1)
 	@Max(5)
-	private Integer valutation;
+	private Integer vote;
 
 	private String description;
 
@@ -54,12 +54,12 @@ public class Review {
 		this.title = title;
 	}
 
-	public Integer getValutation() {
-		return valutation;
+	public Integer getVote() {
+		return vote;
 	}
 
-	public void setValutation(Integer valutation) {
-		this.valutation = valutation;
+	public void setVote(Integer vote) {
+		this.vote = vote;
 	}
 
 	public String getDescription() {
@@ -88,7 +88,7 @@ public class Review {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, title, valutation);
+		return Objects.hash(id, title, vote);
 	}
 
 	@Override
@@ -101,7 +101,7 @@ public class Review {
 			return false;
 		Review other = (Review) obj;
 		return Objects.equals(id, other.id) && Objects.equals(title, other.title)
-				&& Objects.equals(valutation, other.valutation);
+				&& Objects.equals(vote, other.vote);
 	}
 
 }

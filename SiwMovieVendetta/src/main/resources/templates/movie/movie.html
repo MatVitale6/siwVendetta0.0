@@ -29,8 +29,17 @@
     		    </li>
    		   </ul>
    	       <div><img width="30%" th:src=${movie.urlImage} /></div>
-		 
-		
+   	       
+		 <div th:unless="${movie.reviews}"></div>
+		 <ul>
+			 <p>Ecco le recensioni al film</p>
+			 <li th:each="review : ${movie.reviews}">
+				 <a th:href="@{'/review' + '/' + ${review.id}}"  
+				 th:text="${review.title} + '(' + ${review.vote} + ')"></a>
+			 </li>
+		 </ul>
+		<a th:href="@{'/formNewReview' + '/' + ${movie.id}}">New Review</a>
+			
           <div th:unless="${movie}">Non esiste</div>
 		</div>
     </body>

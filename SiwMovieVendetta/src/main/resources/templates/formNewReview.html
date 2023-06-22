@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title>New Review</title>
+        <link rel="stylesheet" href="/css/stile.css" />
+    </head>
+    <body>
+        <div><a href="/"><img src="/images/logo2.png" width="10%"/></a></div>
+        <h1>Aggiungi una review</h1>
+        <form th:action="@{'/review' + '/' + ${movie.id}}" method="POST" th:object="${review}">
+    	<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err:${#fields.globalErrors()}"th:text="${err}">...</p>
+		</div>
+		<div>
+			<label for="titolo">Titolo:</label> <span><input type="text" th:field="${review.title}" id="titolo"/></span>
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+		</div>
+
+		<div>
+			<label for="voto">Vote:</label> <span><input type="text" th:field="${review.vote}" id="voto"/></span>
+			<span th:if="${#fields.hasErrors('vote')}" th:errors="*{vote}"></span>
+		</div> 
+		
+		
+		<div>
+			<span><button type="submit">Conferma</button></span>
+		</div>
+    </form>
+  </body>
+</html>

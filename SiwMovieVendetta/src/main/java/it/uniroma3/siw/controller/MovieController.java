@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.MovieValidator;
+import it.uniroma3.siw.controller.validator.ReviewValidator;
 import it.uniroma3.siw.model.Artist;
 import it.uniroma3.siw.model.Movie;
+import it.uniroma3.siw.model.Review;
 import it.uniroma3.siw.repository.ArtistRepository;
 import it.uniroma3.siw.repository.MovieRepository;
+import it.uniroma3.siw.repository.ReviewRepository;
 import it.uniroma3.siw.service.MovieService;
 import jakarta.validation.Valid;
 
@@ -25,6 +28,8 @@ public class MovieController {
 	@Autowired MovieService movieService;
 	@Autowired MovieValidator movieValidator;
 	@Autowired ArtistRepository artistRepository;
+	@Autowired ReviewRepository reviewRepository;
+	@Autowired ReviewValidator reviewValidator;
 	
 	@GetMapping("/indexMovie")
 	public String getIndexMovie () {
@@ -49,7 +54,6 @@ public class MovieController {
 		} 
 		else {
 			return "/movie/formNewMovie.html";
-	
 		} 
 	}
 	
@@ -124,7 +128,7 @@ public class MovieController {
 		Artist actor = this.artistRepository.findById(id1).get();
 		movie.getActors().add(actor);
 		actor.getActedMovies().add(movie);
-		this.movieService.createNewMovie(movie);
+		this.movieService.createNewMovie(movie); //questa é la save
 		this.artistRepository.save(actor);
 		model.addAttribute("artists1", this.artistRepository.findAllByActedMoviesIsContaining(movie));
 		model.addAttribute("artists2", this.artistRepository.findAllByActedMoviesIsNotContaining(movie));
@@ -149,4 +153,22 @@ public class MovieController {
 		return "/movie/manageActors.html";
 	
 	}
+	
+	
+	
+	//non lo so se é giusto
+	/*
+	@GetMapping("/addReviewToMovie/{idReview}/{idMovie}")
+	public String addReviewToMovie(@PathVariable("idReview") Long id1, @PathVariable("idMovie") Long id2, Model model) {
+		model.addAttribute("reviews", this.reviewRepository.findAll());
+		Movie movie = this.movieService.findMovieByID(id2);
+		Review review = this.reviewRepository.findById(id1).get();
+		movie.getReviews().add(review);
+		this.movieService.createNewMovie(movie); //questa é la save
+		this.reviewRepository.save(review);
+		model.addAttribute("review", this.reviewRepository.findByFilm(movie));
+		model.addAttribute("movie", movie);
+		return "/movie/movie.html";  
+	}
+	*/
 }
