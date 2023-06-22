@@ -20,7 +20,10 @@
 			<label for="voto">Vote:</label> <span><input type="text" th:field="${review.vote}" id="voto"/></span>
 			<span th:if="${#fields.hasErrors('vote')}" th:errors="*{vote}"></span>
 		</div> 
-		
+		<div>
+			<label for="descrizione">Descrizione</label><span><input type="text" th:field="${review.description}" id="descrizione"/></span>
+			<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+		</div>
 		
 		<div>
 			<span><button type="submit">Conferma</button></span>
