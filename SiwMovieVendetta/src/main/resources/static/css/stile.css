@@ -6,6 +6,41 @@ html {
 body{
 	text-align: center;
 }
+header{
+	position: absolut;
+	top:0;
+	width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 10000;
+}
+header ul 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li 
+{
+     list-style: none;
+     margin-left: 20px;
+}
+header ul li a 
+{
+    text-decoration: none;
+    padding: 6px 15px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 20px;
+}
+header ul li a:hover,
+header ul li a.active
+{
+    background: #fff;
+    color:#2b1055;
+}
 h1{
 	color: rgb(255, 128, 0);
 	font-size: 40px;

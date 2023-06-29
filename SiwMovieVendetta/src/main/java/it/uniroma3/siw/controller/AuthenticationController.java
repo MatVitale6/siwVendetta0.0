@@ -25,6 +25,7 @@ public class AuthenticationController {
 
     @Autowired
 	private UserService userService;
+    
 	
 	@GetMapping(value = "/register") 
 	public String showRegisterForm (Model model) {
@@ -36,6 +37,12 @@ public class AuthenticationController {
 	@GetMapping(value = "/login") 
 	public String showLoginForm (Model model) {
 		return "formLogin";
+	}
+	
+	//sicuro manca il metodo nell'html
+	@GetMapping("/logout") 
+	public String logout(Model model) {
+		return "index.html";
 	}
 
 	@GetMapping(value = "/") 

@@ -5,15 +5,18 @@
         <link rel="stylesheet" href="/css/stile.css" />
     </head>
 	<body>
-		<div class="sidebar">
-			<a href="/indexMovie">Film</a>
-			<a href="/indexArtist">Artisti</a>
-		</div>
+		<header>
+		<ul>	
+			<li><a href="/indexMovie">Film</a></li>
+			<li><a href="/indexArtist">Artisti</a></li>
+		</ul>	
+		</header>
 		<div>
 		    <div><a href="/"><img src="/images/logo2.png" width="10%"/></a></div>
 		    <div th:if="${review}">
 				<h1 th:text="${review.title}">Titolo Review</h1>
 				<h2>Voto: <span th:text="'(' + ${review.vote} + ')'"></span> </h2>
+				<h2>Descrizione: <span th:text="${review.description}"></span></h2> 
 		    </div> 
 		    <div th:href="@{'/movie' + '/' + ${movie.id}}"></div> 
 			</div>	

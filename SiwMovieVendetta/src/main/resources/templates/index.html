@@ -9,13 +9,18 @@
     <!--background-image="/images/sfondo2.png" background-repeat="no-repeat" background-size="cover"-->
     <body background-image="/images/sfondo2.png" background-repeat="no-repeat" background-size="cover">
 		<header>
-		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${user}">
-			<a href="/login">Login</a>
-		</div>
+		 <ul>
+                <li><a href="/">Home</a></li>
+                <li><div th:if="${userDetails}">
+					<span th:text="${userDetails.username}"></span>
+					<a href="/logout">Logout</a>
+					</div>
+					<div th:unless="${user}"> 
+					<a href="/login">Login</a>
+						</div></li>
+                <li><a href="#">Register</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
 	</header>
 
 	<div><img src="/images/logo2.png" width="30%" /></div>

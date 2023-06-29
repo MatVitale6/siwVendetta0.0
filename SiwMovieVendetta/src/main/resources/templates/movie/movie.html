@@ -14,6 +14,10 @@
           <div th:if="${movie}">
           <h1 th:text="${movie.title}">Titolo film</h1>
               <h2>Anno: <span th:text="'(' + ${movie.year} + ')'">2000</span></h2>
+              
+              <div th:each="img : ${movie.images}">
+				  <img th:src="'data:image/jpeg;base64,'+${img.getImgData()}">
+			  </div>
             
               <div th:if=${movie.director}>
 				  <h2>Regista:<span th:text="${movie.director.name}">Antonio Banderas</span></h2>
@@ -28,14 +32,12 @@
       		       th:text="${artist.name} + ' (' + ${artist.surname} + ')'">Up! (2000)</a>
     		    </li>
    		   </ul>
-   	       <div><img width="30%" th:src=${movie.urlImage} /></div>
    	       
 		 <div th:unless="${movie.reviews}"></div>
 		 <ul>
 			 <p>Ecco le recensioni al film</p>
 			 <li th:each="review : ${movie.reviews}">
-				 <a th:href="@{'/review' + '/' + ${review.id}}"  
-				 th:text="${review.title} + '(' + ${review.vote} + ')"></a>
+				 <a th:text="${review.title} + '(' + ${review.vote} + ')"></a>
 			 </li>
 		 </ul>
 		<a th:href="@{'/formNewReview' + '/' + ${movie.id}}">New Review</a>

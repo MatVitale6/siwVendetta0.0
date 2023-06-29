@@ -33,7 +33,7 @@ public class ArtistController {
 	@GetMapping("/formNewArtist")
 	public String formNewArtist(Model model) {
 		model.addAttribute("artist", new Artist());
-		return "/artist/formNewArtist.html";
+		return "/admin/formNewArtist.html";
 	}
 	
 	
@@ -49,7 +49,7 @@ public class ArtistController {
 			return "/artist/artist.html";
 		} 
 		else {
-			return "/artist/formNewArtist.html";
+			return "/admin/formNewArtist.html";
 		} 
 	}
 	

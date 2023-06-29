@@ -2,6 +2,7 @@ package it.uniroma3.siw.model;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
@@ -33,8 +34,9 @@ public class Movie {
 	@Min(1900)
 	@Max(2023)
     private Integer year;
-    private String urlImage;
     
+	
+	
     @ManyToOne
     private Artist director;
     
@@ -44,6 +46,8 @@ public class Movie {
     @OneToMany(mappedBy="film")
     private List<Review> reviews;
     
+    @OneToMany
+	private Set<Picture> images;
 
 	public Long getId() {
 		return id;
@@ -64,11 +68,12 @@ public class Movie {
 	public void setYear(Integer year) {
 		this.year = year;
 	}
-	public String getUrlImage() {
-		return urlImage;
+	public Set<Picture> getImmagini() {
+		return images;
 	}
-	public void setUrlImage(String urlImage) {
-		this.urlImage = urlImage;
+
+	public void setImmagini(Set<Picture> immagini) {
+		this.images = immagini;
 	}
 	
     public Artist getDirector() {
@@ -99,7 +104,7 @@ public class Movie {
     //									 stesso titolo e stesso anno
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, title, urlImage, year);
+		return Objects.hash(id, title, year);
 	}
 	
 	@Override

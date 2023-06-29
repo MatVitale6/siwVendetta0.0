@@ -53,6 +53,6 @@ public class ReviewController {
 	@GetMapping("/review/{id}")
 	public String getReview(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("review", this.reviewRepository.findById(id).get());
-		return "/review.html"; 
+		return "/review.html";
 	}
 }

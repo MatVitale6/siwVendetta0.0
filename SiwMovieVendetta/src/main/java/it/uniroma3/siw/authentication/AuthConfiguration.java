@@ -52,8 +52,13 @@ public class AuthConfiguration {
 //                .requestMatchers("/**").permitAll()
                 // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
                 .requestMatchers(HttpMethod.GET,"/","/index","/register","/css/**", "/images/**", "favicon.ico").permitAll()
+                .requestMatchers(HttpMethod.GET,"/indexMovie", "/indexAratist").permitAll()
+                .requestMatchers(HttpMethod.GET, "/movies", "/movie", "/foundMovies", "/formSearchMovies").permitAll()
+                .requestMatchers(HttpMethod.GET, "/artist", "/artists", "/formSearchArtist", "/foundArtist").permitAll()
+                .requestMatchers(HttpMethod.GET, "/review").permitAll()
         		// chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
                 .requestMatchers(HttpMethod.POST,"/register", "/login").permitAll()
+                // solo gli utenti autenticati con ruolo ADMIN possono accedere a risorse con path /admin/**
                 .requestMatchers(HttpMethod.GET,"/admin/**").hasAnyAuthority(ADMIN_ROLE)
                 .requestMatchers(HttpMethod.POST,"/admin/**").hasAnyAuthority(ADMIN_ROLE)
         		// tutti gli utenti autenticati possono accere alle pagine rimanenti 

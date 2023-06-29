@@ -39,7 +39,7 @@ public class MovieController {
 	@GetMapping("/formNewMovie")
 	public String formNewMovie(Model model) {
 		model.addAttribute("movie", new Movie());
-		return "/movie/formNewMovie.html";
+		return "/admin/formNewMovie.html";
 	}
 	
 	@PostMapping("/movies")
@@ -83,20 +83,20 @@ public class MovieController {
 	@GetMapping("/manageMovies")
 	public String manageMovie(Model model) {
 		model.addAttribute("movies", this.movieService.findAllMovie());
-		return "/movie/manageMovies.html"; 
+		return "/admin/manageMovies.html"; 
 	}
 
 	@GetMapping("/formUpdateMovie/{id}")
 	public String updateMovie (@PathVariable("id") Long id,Model model) {
 		model.addAttribute("movie", this.movieService.findMovieByID(id));
-		return "/movie/formUpdateMovie.html";
+		return "/admin/formUpdateMovie.html";
 	}
 
 	@GetMapping("/addDirectorToMovie/{id}")
 	public String addDirectorToMovie(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("artists", this.artistRepository.findAll());
 		model.addAttribute("movie", this.movieService.findMovieByID(id));
-		return "/movie/addDirectorToMovie.html";
+		return "/admin/addDirectorToMovie.html";
 	}
 
 	@GetMapping("/setDirectorToMovie/{id1}/{id2}")
@@ -107,7 +107,7 @@ public class MovieController {
 		model.addAttribute("movie",movie);
 		model.addAttribute("artist", director);
 		this.movieService.createNewMovie(movie);
-		return "/movie/formUpdateMovie.html";
+		return "/admin/formUpdateMovie.html";
 	}
 
 
@@ -118,7 +118,7 @@ public class MovieController {
 		model.addAttribute("artists", this.artistRepository.findAll());
 		model.addAttribute("artists1", this.artistRepository.findAllByActedMoviesIsContaining(movie));
 		model.addAttribute("artists2", this.artistRepository.findAllByActedMoviesIsNotContaining(movie));
-		return "/movie/manageActors.html";
+		return "/admin/manageActors.html";
 	}
 
 	@GetMapping("/addActorToMovie/{idActor}/{idMovie}")
@@ -134,7 +134,7 @@ public class MovieController {
 		model.addAttribute("artists2", this.artistRepository.findAllByActedMoviesIsNotContaining(movie));
 		model.addAttribute("movie", movie);
 		model.addAttribute("artist", actor);
-		return "/movie/manageActors.html";  
+		return "/admin/manageActors.html";  
 	}
 
 	@GetMapping("/removeActorFromMovie/{idActor}/{idMovie}")
@@ -150,25 +150,7 @@ public class MovieController {
 		model.addAttribute("artists2", this.artistRepository.findAllByActedMoviesIsNotContaining(movie));
 		model.addAttribute("movie", movie);
 		model.addAttribute("artist", actor);
-		return "/movie/manageActors.html";
+		return "/admin/manageActors.html";
 	
 	}
-	
-	
-	
-	//non lo so se é giusto
-	/*
-	@GetMapping("/addReviewToMovie/{idReview}/{idMovie}")
-	public String addReviewToMovie(@PathVariable("idReview") Long id1, @PathVariable("idMovie") Long id2, Model model) {
-		model.addAttribute("reviews", this.reviewRepository.findAll());
-		Movie movie = this.movieService.findMovieByID(id2);
-		Review review = this.reviewRepository.findById(id1).get();
-		movie.getReviews().add(review);
-		this.movieService.createNewMovie(movie); //questa é la save
-		this.reviewRepository.save(review);
-		model.addAttribute("review", this.reviewRepository.findByFilm(movie));
-		model.addAttribute("movie", movie);
-		return "/movie/movie.html";  
-	}
-	*/
 }
