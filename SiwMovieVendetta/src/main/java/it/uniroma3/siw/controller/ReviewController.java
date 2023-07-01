@@ -1,5 +1,7 @@
 package it.uniroma3.siw.controller;
 
+import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,35 +23,33 @@ import jakarta.validation.Valid;
 public class ReviewController {
 	@Autowired ReviewRepository reviewRepository;
 	@Autowired ReviewValidator reviewValidator;
+	@Autowired CredentialsService credentialsService;
 	@Autowired MovieService movieService;
+	@Autowired ReviewService reviewService;
 	
-	@GetMapping("/formNewReview/{idMovie}")
-	public String formNewReview(@PathVariable("idMovie") Long idMovie, Model model) {
+	@GetMapping("/formNewReview/{idMovie}/{idUser}")
+	public String formNewReview(@PathVariable("idMovie") Long idMovie,@PathVariable("idUser") Long idUser, Model model) {
 		model.addAttribute("review", new Review());
 		model.addAttribute("movie", this.movieService.findMovieByID(idMovie));
+		model.addAttribute("credentials", this.credentialsService.getCredentials(idUser));
 		return "/formNewReview.html";
 	}
 	
-	@PostMapping("/review/{idMovie}")
-	public String newReview(@Valid @ModelAttribute("review")Review review,@PathVariable("idMovie") Long idMovie,BindingResult bindingResult, Model model) {
+	@PostMapping("/review/{idMovie}/{idUser}")
+	public String newReview(@Valid @ModelAttribute("review")Review review,@PathVariable("idMovie") Long idMovie,
+							@PathVariable("idUser") long idUser,BindingResult bindingResult, Model model) {
 		this.reviewValidator.validate(review, bindingResult);
 		if(!bindingResult.hasErrors()) {
-			this.reviewRepository.save(review);
+			this.reviewService.addReview(review, idMovie, idUser, model);
 			model.addAttribute("review", review);
-			
-			Movie movie = this.movieService.findMovieByID(idMovie);
-			movie.getReviews().add(review);
-			review.setReviewed(movie);
-			this.movieService.createNewMovie(movie);
-			this.reviewRepository.save(review);
-			model.addAttribute("review",review);
-			model.addAttribute("movie", movie);
 			return "/review.html";
 		}
-		else {
+		else{
+
 			return "/formNewReview.html";
-		}
+			}
 	}
+
 	@GetMapping("/review/{id}")
 	public String getReview(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("review", this.reviewRepository.findById(id).get());

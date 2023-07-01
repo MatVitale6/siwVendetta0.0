@@ -67,6 +67,9 @@ public class User {
 		this.writtens = writtens;
 	}
 
+	public void addWritten(Review review) {
+		this.writtens.add(review);
+	}
 
 	@Override
 	public int hashCode() {

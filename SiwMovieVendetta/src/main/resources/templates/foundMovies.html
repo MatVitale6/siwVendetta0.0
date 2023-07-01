@@ -13,7 +13,7 @@
 	<ul th:if="${!movies.isEmpty()}">
 		<li th:each="movie : ${movies}">
 			<a href="movie.html" th:href="@{'/movies' + '/' + ${movie.id}}"
-				th:text="${movie.title} + ' (' + ${movie.year}+')'">Up! (2000)</a>
+			   th:text="${movie.title} + ' (' + ${movie.year}+')'">Up! (2000)</a>
 		</li>
 	</ul>
 </body>

@@ -8,30 +8,31 @@
 
 <body>
 	<header>
-		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${user}">
-			<a href="/login">Login</a>
-		</div>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><div th:if="${userDetails}">
+				<span th:text="${userDetails.username}"></span>
+				<a href="/logout">Logout</a>
+			</div>
+				<div th:unless="${user}">
+					<a href="/login">Login</a>
+				</div>
+			</li>
+			<li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
+		</ul>
 	</header>
 
-	<div>
-		<a href="/"><img src="/images/logo2.png" width="20%"/></a>
-	</div>
-	<h1>Congratulazioni ti sei registrato!</h1>
-	<div class="success">
-		<span>Nome: </span>
-		<span th:text="${user.name}"></span>
-	</div>
-	<div class="success">
-		<span>Cognome: </span>
-		<span th:text="${user.surname}"></span>
-	</div>
-	<div class="success">
-		<span>Email: </span>
-		<span th:text="${user.email}"></span>
-	</div>
+	<section>
+		<div>
+			<img src="/images/logo2.png" width="20%"/>
+		</div>
+		<h1>Bene, ho i tuoi dati!</h1>
+		<div class="success">
+			<p><span>Nome:</span><span th:text="${user.name}"></span></p>
+			<p><span>Cognome:</span><span th:text="${user.surname}"></span></p>
+			<p><span>Email:</span><span th:text="${user.email}"></span></p>
+			<p><a href="formLogin.html">Login</a></p>
+		</div>
+	</section>
 </body>
 </html>

@@ -13,18 +13,18 @@
 		<ul>
 		<h3> Lista degli attori nel film</h3>
 		<li th:each="artist : ${artists1}">
-		<a 	  th:href="@{'/removeActorFromMovie' + '/' + ${artist.id} + '/' + ${movie.id}}"
+		<a 	  th:href="@{'/admin/removeActorFromMovie' + '/' + ${artist.id} + '/' + ${movie.id}}"
          	  th:text="${artist.name} + ' (' + ${artist.nationality} + ')'"></a>
    		 </li>
 		</ul>
    		 <h3> Lista degli Attori non presenti nel film</h3>
    		 <ul>
    		 <li th:each="artist : ${artists2}">
-		  <a th:href="@{'/addActorToMovie' + '/' + ${artist.id} + '/' + ${movie.id}}"
+		  <a th:href="@{'/admin/addActorToMovie' + '/' + ${artist.id} + '/' + ${movie.id}}"
          	  th:text="${artist.name} + ' (' + ${artist.nationality} + ')'"></a>
    		 </li>
 		</ul>
 		
-		<a th:href="@{'/formUpdateMovie' + '/' + ${movie.id}}"> FINE </a>
+		<a th:href="@{'/admin/formUpdateMovie' + '/' + ${movie.id}}"> FINE </a>
     </body>
 </html>

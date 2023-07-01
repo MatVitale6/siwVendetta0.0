@@ -12,10 +12,10 @@
 		 <h2> Aggiorna Regista </h2>
             <ul>	
       		<li th:each="artist : ${artists}">
-       		 <a th:href="@{'/setDirectorToMovie' + '/' + ${artist.id} + '/' + ${movie.id}}"
+       		 <a th:href="@{'/admin/setDirectorToMovie' + '/' + ${artist.id} + '/' + ${movie.id}}"
          	  th:text="${artist.name} + ' (' + ${artist.nationality} + ')'"></a>
    		  	</li>
    		 </ul>	  
-   		 <a th:href="'/formNewArtist'">Se non esiste il regista che desideri, clicca qui per aggiungerlo</a>  
+   		 <a th:href="'/admin/formNewArtist'">Se non esiste il regista che desideri, clicca qui per aggiungerlo</a>
 	</body>
 </html>

@@ -14,8 +14,8 @@
           	<div th:if=${movie.director}>Regista: <span th:text="${movie.director.name}">Antonio Banderas</span>
           		<a th:href="@{'/artists'} + '/' + ${movie.director.id}">Vedi regista</a>
           	</div>
-            <a th:href="@{'/addDirectorToMovie' + '/' + ${movie.id}}"> Aggiorna Regista</a>
-        	<div><a th:href="@{'/manageActorsMovie' + '/' + ${movie.id}}"> Gestisti Attori Film</a></div> 
+            <a th:href="@{'/admin/addDirectorToMovie' + '/' + ${movie.id}}"> Aggiorna Regista</a>
+        	<div><a th:href="@{'/admin/manageActorsMovie' + '/' + ${movie.id}}"> Gestisti Attori Film</a></div>
         <div th:unless="${movie}">Non esiste</div>
     </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Film</title>
+    <link rel="stylesheet" href="/css/stile.css" />
+  </head>
+
+  <body>
+    <header>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><div th:if="${userDetails}">
+          <span th:text="${userDetails.username}"></span>
+          <a href="/logout">Logout</a>
+        </div>
+          <div th:unless="${user}">
+            <a href="/login">Login</a>
+          </div>
+        </li>
+        <li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
+      </ul>
+    </header>
+    <section>
+      <img src="/images/logo2.png" width="15%" />
+      <h2>Artisti nell'archivio:</h2>
+      <div th:if="${artists.isEmpty()}">
+        <a href="formNewArtist">Non ci sono film nel sistema, clicca qui per aggiungerne uno</a>
+      </div>
+      <ul>
+        <li th:each="artist : ${artists}">
+          <a th:href="@{'/artists' + '/' + ${artist.id}}"
+             th:text="${artist.name} + ' (' + ${artist.nationality} + ')'">Up! (2000)</a>
+        </li>
+      </ul>
+    </section>
+  </body>
+</html>

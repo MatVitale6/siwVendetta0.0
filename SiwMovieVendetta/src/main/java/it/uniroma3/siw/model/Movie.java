@@ -68,11 +68,11 @@ public class Movie {
 	public void setYear(Integer year) {
 		this.year = year;
 	}
-	public Set<Picture> getImmagini() {
+	public Set<Picture> getImages() {
 		return images;
 	}
 
-	public void setImmagini(Set<Picture> immagini) {
+	public void setImages(Set<Picture> immagini) {
 		this.images = immagini;
 	}
 	

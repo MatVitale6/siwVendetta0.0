@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Film</title>
+        <link rel="stylesheet" href="/css/stile.css" />
+    </head>
+    <body>
+	<header>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><div th:if="${userDetails}">
+				<span th:text="${userDetails.username}"></span>
+				<a href="/logout">Logout</a>
+			</div>
+				<div th:unless="${user}">
+					<a href="/login">Login</a>
+				</div>
+			</li>
+			<li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
+		</ul>
+	</header>
+	<section>
+		<div>
+			<img src="/images/logo2.png" width="10%"/>
+			<div th:if="${movie}">
+				<h1 th:text="${movie.title}">Titolo film</h1>
+				<h2>Anno: <span th:text="'(' + ${movie.year} + ')'">2000</span></h2>
+
+				<div th:each="img : ${movie.images}">
+					<img th:src="'data:image/jpeg;base64,'+${img.getImgData()}">
+				</div>
+
+				<div th:if="${movie.director}">
+					<h2>Regista:<span th:text="${movie.director.name}">Antonio Banderas</span></h2>
+				</div>
+
+			</div>
+			<div th:unless="${movie.actors}"></div>
+			<ul>
+				<p>Gli artisti recitatori:</p>
+				<li th:each="artist : ${movie.actors}">
+					<a th:href="@{'/artists' + '/' + ${artist.id}}"
+					   th:text="${artist.name} + ' ' + ${artist.surname}">Up! (2000)</a>
+				</li>
+			</ul>
+
+			<div th:unless="${movie.reviews}"></div>
+			<ul>
+				<p>Le recensioni recensite:</p>
+				<li th:each="review : ${movie.reviews}">
+					<a th:href="@{'/review' + '/' + ${review.id}}"
+					   th:text="${review.title + ' (' + review.vote + ')'}">Recensione</a>
+				</li>
+			</ul>
+			<p><a th:href="@{'/formNewReview' + '/' + ${movie.id} + '/' + ${credentials.user.id}}">New Review</a></p>
+
+			<div th:unless="${movie}">Non esiste</div>
+		</div>
+	</section>
+    </body>
+</html>

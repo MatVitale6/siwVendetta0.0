@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head>
         <title>Film</title>
-        <link rel="stylesheet" href="/css/stile.css"/>
-        
-    </head>
+
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="/css/stile.css"/>
+	</head>
     
     <!--background-image="/images/sfondo2.png" background-repeat="no-repeat" background-size="cover"-->
     <body background-image="/images/sfondo2.png" background-repeat="no-repeat" background-size="cover">
@@ -17,19 +18,22 @@
 					</div>
 					<div th:unless="${user}"> 
 					<a href="/login">Login</a>
-						</div></li>
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Contact</a></li>
+						</div>
+				</li>
+                <li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
             </ul>
 	</header>
+	<section >
+		<img src="/images/logo2.png" width="20%" />
+		<h1>Consulta l'archivio</h1>
+		<p>
+			<a href="indexMovie">Elenco Film</a>
+		</p>
+		<p>
+			<a href="indexArtist">Elenco Artisti</a>
+		</p>
+	</section>
 
-	<div><img src="/images/logo2.png" width="30%" /></div>
-	<h1>Consulta l'archivio</h1>
-	<div>
-		<a href="indexMovie">Elenco Film</a>
-	</div>
-	<div>
-		<a href="indexArtist">Elenco Artisti</a>
-	</div>
-    </body>
+
+	</body>
 </html>

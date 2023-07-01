@@ -6,17 +6,31 @@
     </head>
     
     <body>
-		<img src="/images/logo2.png" width="30%" class="center"/>
+	<header>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><div th:if="${userDetails}">
+				<span th:text="${userDetails.username}"></span>
+				<a href="/logout">Logout</a>
+			</div>
+				<div th:unless="${user}">
+					<a href="/login">Login</a>
+				</div>
+			</li>
+			<li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
+		</ul>
+	</header>
+	<section>
+		<img src="/images/logo2.png" width="20%" class="center"/>
 		<p>
-			<a href="artists">La lista degli artisti</a>
-		</p>
-		<p>
-			<a href="formNewArtist">Aggiungi artista va!</a>
+			<a href="artists">Artisti nell'archivio</a>
 		</p>
 		<p>
 			<a href="formSearchArtists">Cerca Artista per cognome</a>
 		</p>
-		
+
+	</section>
+
 		
     </body>
 </html>

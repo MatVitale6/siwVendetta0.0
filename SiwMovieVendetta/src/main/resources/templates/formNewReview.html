@@ -7,7 +7,7 @@
     <body>
         <div><a href="/"><img src="/images/logo2.png" width="10%"/></a></div>
         <h1>Aggiungi una review</h1>
-        <form th:action="@{'/review' + '/' + ${movie.id}}" method="POST" th:object="${review}">
+        <form th:action="@{'/review' + '/' + ${movie.id} + '/' +${credentials.user.id}}" method="POST" th:object="${review}">
     	<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err:${#fields.globalErrors()}"th:text="${err}">...</p>
 		</div>

@@ -1,19 +1,18 @@
 html {
-  background: url(/images/sfondo2.png) no-repeat center center fixed; 
-  background-size: cover;
-  font-family: 'Century Gothic';
+	background: url(/images/sfondo2.png) no-repeat center center fixed;
+	background-size: cover;
+	font-family: "Lucida Sans Unicode", serif;
 }
-body{
-	text-align: center;
-}
+
 header{
-	position: absolut;
+	position:absolute;
 	top:0;
+	height: 8%;
 	width: 100%;
-    padding: 30px 100px;
+    padding: 10px 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     z-index: 10000;
 }
 header ul 
@@ -25,59 +24,70 @@ header ul
 header ul li 
 {
      list-style: none;
-     margin-left: 20px;
+	margin: inherit;
 }
 header ul li a 
 {
     text-decoration: none;
     padding: 6px 15px;
-    font-size: 20px;
-    color: #fff;
+    font-size: 15px;
+    color: rgb(255, 128, 0);
+	background: #ccde9c;
     border-radius: 20px;
+	font-stretch: expanded;
 }
 header ul li a:hover,
 header ul li a.active
 {
-    background: #fff;
-    color:#2b1055;
+    background: #ccde9c;
+    color:rgb(255, 128, 0);
+	font-size: 25px;
+	font-stretch: expanded;
+}
+section
+{
+	text-align: center;
+	margin-top:10%;
+	margin-bottom: 10%;
 }
 h1{
 	color: rgb(255, 128, 0);
-	font-size: 40px;
-	border : thick double;
-	border-color: rgb(128, 128, 192);
+	font-size: 200%;
 	border-radius: 20px;
 	margin-left: 30%;
 	margin-right: 30%;
-	
+	font-family: Constantia;
+	border-color: #f4d8bc;
+	background-color: #ccde9c;
 }
 h2{
 	text-decoration: none;
-	color: lightseagreen;
-	font-size: 30px;
+	color: #ff8000;
+	font-size: 150%;
 }
 li{
 	font-size: 25px;
 	color: darkgreen;
 }
 form{
-	margin-top: 5%;
+	margin-top: 2%;
 	font-size: 18px;
 	border: thick double;
-	border-color: red;
+	border-color: #ff8000;
 	border-radius: 20px;
 	margin-left: 40%;
 	margin-right: 40%;
-	background-color: rgb(255, 255, 128);
+	background-color: rgb(204, 222, 156);
 }
 p{
+	text-decoration: none;
 	margin-left:30%;
 	margin-right:30%;
 	font-size: 20px;
-	font-family: 'Century Gothic';
 	color: darkgreen;
 	border:thick double darkgreen ;
 	border-radius: 20px;
+	background-color: #ccde9c;
 }
 ul{
 	list-style-type: none;
@@ -85,12 +95,15 @@ ul{
 a{
 	text-decoration: none;
 	font-size: 25px;
-	color: cadetblue;	
+	color: cadetblue;
+	text-decoration: none;
 }
 a:hover{
 	text-decoration: none;
 	font-size: 30px;
-	color: olivedrab;	
+	color: #ff8000;
+	background: #ccde9c;
+	border-radius: 20px;
 }
 li span{
 	margin-top: 1px;
@@ -99,25 +112,42 @@ li span{
 }
 button{
 	opacity: 0.5;
-	color: blueviolet;
+	color: #ff8000;
 	font-size: 18px;
 	padding:1% 5%;	
 	text-shadow: 1px 1px 1px #000;
 	border-radius: 10px;
-	background-color: lightseagreen;
+	background-color: #bddaca;
 	background-image: linear-gradient(to top left, rgba(0,0,0,0.2),rgba(0,0,0,0.2) 30%, rgba(0,0,0,0));
 }
 button:hover{
 	opacity: 1;
 }
-.container1{
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
-	height: 30%;
-	width: 25%;
-}
 div .success{
-	color: cadetblue;
-	
+	background-color: #ccde9c;
+	border-radius: 20%;
 }
+.success p{
+	font-size: 25px;
+	color: darkgreen;
+	border-color: #f4d8bc;
+	background-color: #ccde9c;
+}
+.success a{
+	font-size: 25px;
+	color: darkgreen;
+	border-color: #f4d8bc;
+	background-color: #ccde9c;
+}
+.success a:hover{
+	font-size: 30px;
+	color: #ff8000;
+	background: #ccde9c;
+	border-radius: 20px;
+}
+.success span{
+	font-size: 25px;
+	color: darkgreen;
+}
+
+

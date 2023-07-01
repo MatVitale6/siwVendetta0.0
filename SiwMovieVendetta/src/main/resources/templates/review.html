@@ -16,10 +16,10 @@
 		    <div th:if="${review}">
 				<h1 th:text="${review.title}">Titolo Review</h1>
 				<h2>Voto: <span th:text="'(' + ${review.vote} + ')'"></span> </h2>
-				<h2>Descrizione: <span th:text="${review.description}"></span></h2> 
+				<h2>Descrizione: <span th:text="${review.description}"></span></h2>
+				<h2>Autore: <span th:text="${review.writer.name}"></span></h2>
 		    </div> 
-		    <div th:href="@{'/movie' + '/' + ${movie.id}}"></div> 
-			</div>	
+
 		</div>
 	</body>
 </html>

@@ -30,7 +30,7 @@ public class ArtistController {
 		return "indexArtist.html";
 	}
 	
-	@GetMapping("/formNewArtist")
+	@GetMapping("/admin/formNewArtist")
 	public String formNewArtist(Model model) {
 		model.addAttribute("artist", new Artist());
 		return "/admin/formNewArtist.html";
@@ -46,7 +46,7 @@ public class ArtistController {
 		if (!bindingResult.hasErrors()) { 
 			this.artistRepository.save(artist);
 			model.addAttribute("artist", artist);
-			return "/artist/artist.html";
+			return "/artist.html";
 		} 
 		else {
 			return "/admin/formNewArtist.html";
@@ -56,24 +56,24 @@ public class ArtistController {
 	@GetMapping ("/artists/{id}")
 	public String getArtist(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("artist", this.artistRepository.findById(id).get());
-		return "/artist/artist.html";
+		return "/artist.html";
 	}
 	
 	@GetMapping("/artists")
 	public String showArtists (Model model) {
 		model.addAttribute("artists", this.artistRepository.findAll());
-		return "/artist/artists.html"; 
+		return "/artists.html";
 	}
 	
 	@GetMapping("/formSearchArtists") 
 	public String formSearchArtists() {
-		return "/artist/formSearchArtists.html"; 
+		return "/formSearchArtists.html";
 	}
 	
 	@PostMapping("/searchArtists")
 	public String searchArtists(Model model, @RequestParam String surname) {
 		model.addAttribute("artists", this.artistRepository.findBySurname(surname));
-		return "/artist/foundArtists.html"; 
+		return "/foundArtists.html";
 	}
 	
 }

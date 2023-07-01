@@ -42,7 +42,7 @@ public class Artist {
 	@ManyToMany
 	private List<Movie>actedMovies; //si intende i film in cui ha recitato!
 
-	
+	private String url_of_picture;
 
 	@Override
 	public int hashCode() {

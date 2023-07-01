@@ -10,20 +10,26 @@
 
 <body>
 	<header>
-		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
-			<a href="/logout">Logout</a>
-		</div>
-		<!--<div th:unless="${user}">
-			<a href="/login">Login</a>
-		</div>-->
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><div th:if="${userDetails}">
+				<span th:text="${userDetails.username}"></span>
+				<a href="/logout">Logout</a>
+			</div>
+				<div th:unless="${user}">
+					<a href="/login">Login</a>
+				</div>
+			</li>
+			<li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
+		</ul>
 	</header>
 
-	<div>
-		<a href="/"><img src="/images/logo2.png" width="30%"/></a>
-	</div>
-	<h1>Login</h1>
-	<form th:action="@{/login}" method="POST">
+	<section>
+		<div>
+			<img src="/images/logo2.png" width="20%"/></a>
+		</div>
+		<h1>Login</h1>
+		<form th:action="@{/login}" method="POST">
 			<div>
 				<span>Username:</span>
 				<span><input name="username" type="text" required /></span>
@@ -38,10 +44,8 @@
 			<div>
 				<span><button type="submit">Login</button></span>
 			</div>
-	</form>
-	<div>
-		<a th:href="@{/register}" th:text="Registrati">Registrati</a>
-	</div>
+		</form>
+	</section>
 </body>
 
 </html>

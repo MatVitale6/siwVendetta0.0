@@ -13,7 +13,7 @@
 	<ul th:if="${!artists.isEmpty()}">
 		<li th:each="artist : ${artists}">
 			<a href="artist.html" th:href="@{'/artists' + '/' + ${artist.id}}"
-				th:text="${artist.name} + ${artist.surname}"> Quenti Taranto
+			   th:text="${artist.name} + ${artist.surname}"> Quenti Taranto
 				</a>
 				
 		</li>
