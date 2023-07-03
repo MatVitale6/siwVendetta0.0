@@ -16,7 +16,6 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 @Table
 public class Review {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

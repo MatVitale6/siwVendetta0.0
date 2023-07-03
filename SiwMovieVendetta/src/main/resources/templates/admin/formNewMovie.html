@@ -5,26 +5,43 @@
         <link rel="stylesheet" href="/css/stile.css" />
     </head>
     <body>
-        <div><a href="/"><img src="/images/logo2.png" width="10%"/></a></div>
-        <h1>Aggiungi un film</h1>
-        <form th:action="@{/movies}" method="POST" th:object="${movie}">
-    	<div th:if="${#fields.hasGlobalErrors()}">
-			<p th:each="err:${#fields.globalErrors()}"th:text="${err}">...</p>
-		</div>
-		<div>
-			<label for="titolo">Titolo:</label> <span><input type="text" th:field="${movie.title}" id="titolo"/></span>
-			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
-		</div>
-
-		<div>
-			<label for="anno">Anno:</label> <span><input type="text" th:field="${movie.year}" id="anno"/></span>
-			<span th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
-		</div>
-
-		
-		<div>
-			<span><button type="submit">Conferma</button></span>
-		</div>
-    </form>
+		<header>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><div th:if="${userDetails}">
+					<span th:text="${userDetails.username}"></span>
+					<a href="/logout">Logout</a>
+				</div>
+					<div th:unless="${user}">
+						<a href="/login">Login</a>
+					</div>
+				</li>
+				<li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
+			</ul>
+		</header>
+		<section>
+			<img src="/images/logo2.png" width="10%"/>
+			<h1>Aggiungi un film</h1>
+			<form th:action="@{/movies}" method="POST" th:object="${movie}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err:${#fields.globalErrors()}"th:text="${err}">...</p>
+				</div>
+				<div>
+					<label for="titolo">Titolo:</label> <span><input type="text" th:field="${movie.title}" id="titolo"/></span>
+					<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+				</div>
+				<div>
+					<label for="anno">Anno:</label> <span><input type="text" th:field="${movie.year}" id="anno"/></span>
+					<span th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
+				</div>
+				<div>
+					<label for="immagini">Locandina:</label>
+					<input type="file" id="immagini" th:field="${movie.images}" />
+				</div>
+				<div>
+					<span><button type="submit">Conferma</button></span>
+				</div>
+			</form>
+		</section>
   </body>
 </html>

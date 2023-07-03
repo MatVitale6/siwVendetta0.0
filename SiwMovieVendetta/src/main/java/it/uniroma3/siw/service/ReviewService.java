@@ -20,12 +20,11 @@ public class ReviewService {
     @Autowired MovieRepository movieRepository;
     @Autowired UserRepository userRepository;
 
-    public Review addReview(@ModelAttribute("review") Review review, @PathVariable("movie_id") Long movieID,
-                            @PathVariable("user_id") Long userID, Model model) {
-        User user = userRepository.findById(userID).orElse(null);
-        Movie movie = movieRepository.findById(movieID).orElse(null);
+    public void addReview(Review review, Long movieID, Long userID, Model model) {
+        User user = userRepository.findById(userID).get();
+        Movie movie = movieRepository.findById(movieID).get();
 
-        if(!this.reviewRepository.existsByWriterAndFilm(user, movie)) {
+        if(movie != null && user != null) {
             review.setWriter(user);
             review.setReviewed(movie);
             //se vuoi puoi aggiungere la data con LocalDate.now()
@@ -34,9 +33,7 @@ public class ReviewService {
             review = reviewRepository.save(review);
             movieRepository.save(movie);
             userRepository.save(user);
-            return review;
         }
-        return null;
     }
 
     @Transactional

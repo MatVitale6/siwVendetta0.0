@@ -7,7 +7,7 @@ import it.uniroma3.siw.model.Movie;
 
 public interface MovieRepository extends CrudRepository<Movie, Long> {
 	
-	public List<Movie> findByYear(Integer year);
+	public List<Movie> findMovieByYear(Integer year);
 	
 	public boolean existsByTitleAndYear(String title, Integer Year);
 }

@@ -27,7 +27,7 @@ public class MovieService {
 	
 	@Transactional
 	public Movie findMovieByID(Long id) {
-		return this.movieRepository.findById(id).orElse(null);
+		return this.movieRepository.findById(id).get();
 	}
 	
 	@Transactional
@@ -37,6 +37,6 @@ public class MovieService {
 	
 	@Transactional
 	public List<Movie> findMovieByYear(Integer year) {
-		return this.findMovieByYear(year);
+		return this.movieRepository.findMovieByYear(year);
 	}
 }

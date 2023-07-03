@@ -26,8 +26,10 @@
 				<h1 th:text="${movie.title}">Titolo film</h1>
 				<h2>Anno: <span th:text="'(' + ${movie.year} + ')'">2000</span></h2>
 
-				<div th:each="img : ${movie.images}">
-					<img th:src="'data:image/jpeg;base64,'+${img.getImgData()}">
+				<div th:each="img : ${movie.images}" class="w-64">
+					<div>
+						<img th:src="'data:image/jpeg;base64,'+${img.getData()}">
+					</div>
 				</div>
 
 				<div th:if="${movie.director}">
@@ -36,23 +38,19 @@
 
 			</div>
 			<div th:unless="${movie.actors}"></div>
-			<ul>
 				<p>Gli artisti recitatori:</p>
 				<li th:each="artist : ${movie.actors}">
 					<a th:href="@{'/artists' + '/' + ${artist.id}}"
 					   th:text="${artist.name} + ' ' + ${artist.surname}">Up! (2000)</a>
 				</li>
-			</ul>
 
 			<div th:unless="${movie.reviews}"></div>
-			<ul>
 				<p>Le recensioni recensite:</p>
 				<li th:each="review : ${movie.reviews}">
 					<a th:href="@{'/review' + '/' + ${review.id}}"
 					   th:text="${review.title + ' (' + review.vote + ')'}">Recensione</a>
 				</li>
-			</ul>
-			<p><a th:href="@{'/formNewReview' + '/' + ${movie.id} + '/' + ${credentials.user.id}}">New Review</a></p>
+			<p><a th:href="@{'/formNewReview' + '/' + ${movie.id} + '/' + ${credentials.user.id}}">Scrivi Recensione</a></p>
 
 			<div th:unless="${movie}">Non esiste</div>
 		</div>

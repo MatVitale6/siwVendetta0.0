@@ -49,6 +49,7 @@ public class ArtistController {
 			return "/artist.html";
 		} 
 		else {
+			model.addAttribute("bindingResult", bindingResult);
 			return "/admin/formNewArtist.html";
 		} 
 	}

@@ -6,20 +6,27 @@
     </head>
 	<body>
 		<header>
-		<ul>	
-			<li><a href="/indexMovie">Film</a></li>
-			<li><a href="/indexArtist">Artisti</a></li>
-		</ul>	
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><div th:if="${userDetails}">
+					<span th:text="${userDetails.username}"></span>
+					<a href="/logout">Logout</a>
+				</div>
+					<div th:unless="${user}">
+						<a href="/login">Login</a>
+					</div>
+				</li>
+				<li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
+			</ul>
 		</header>
-		<div>
-		    <div><a href="/"><img src="/images/logo2.png" width="10%"/></a></div>
+		<section>
+		    <img src="/images/logo2.png" width="20%"/>
 		    <div th:if="${review}">
-				<h1 th:text="${review.title}">Titolo Review</h1>
-				<h2>Voto: <span th:text="'(' + ${review.vote} + ')'"></span> </h2>
-				<h2>Descrizione: <span th:text="${review.description}"></span></h2>
-				<h2>Autore: <span th:text="${review.writer.name}"></span></h2>
-		    </div> 
-
-		</div>
+				<h2 th:text="${review.title}">Titolo Review</h2>
+				<p>Voto: <span th:text="'(' + ${review.vote} + ')'"></span> </p>
+				<p>Descrizione: <span th:text="${review.description}"></span></p>
+				<p>Autore: <span th:text="${review.writer.name}"></span></p>
+		    </div>
+		</section>
 	</body>
 </html>

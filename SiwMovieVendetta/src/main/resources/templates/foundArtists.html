@@ -7,17 +7,33 @@
 </head>
 
 <body>
-	<img src="/images/logo2.png" width="30%" class="center"/>
-	<h1>Artisti che soddisfano i requisiti</h1>
-	<div th:if="${artists.isEmpty()}">Non ci sono artist che soddisfano i requisiti</div>
-	<ul th:if="${!artists.isEmpty()}">
-		<li th:each="artist : ${artists}">
-			<a href="artist.html" th:href="@{'/artists' + '/' + ${artist.id}}"
-			   th:text="${artist.name} + ${artist.surname}"> Quenti Taranto
+	<header>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><div th:if="${userDetails}">
+				<span th:text="${userDetails.username}"></span>
+				<a href="/logout">Logout</a>
+			</div>
+				<div th:unless="${user}">
+					<a href="/login">Login</a>
+				</div>
+			</li>
+			<li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
+		</ul>
+	</header>
+	<section>
+		<img src="/images/logo2.png" width="20%" class="center"/>
+		<h1>Artisti che soddisfano i requisiti</h1>
+		<div th:if="${artists.isEmpty()}"><p>Non ci sono artist che soddisfano i requisiti</p></div>
+		<ul th:if="${!artists.isEmpty()}">
+			<li th:each="artist : ${artists}">
+				<a href="artist.html" th:href="@{'/artists' + '/' + ${artist.id}}"
+				   th:text="${artist.name} + ${artist.surname}"> Quenti Taranto
 				</a>
-				
-		</li>
-	</ul>
-</body>
 
+			</li>
+		</ul>
+	</section>
+
+</body>
 </html>

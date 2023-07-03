@@ -6,16 +6,32 @@
     </head>
     
     <body>
-		<a href="/static"><img src="/images/logo2.png" width="30%" class="center"/></a>
-		<div th:if="${movies.isEmpty()}"> 
-		<a href="formNewMovie">Non ci sono film nel sistema, clicca qui per aggiungerne uno</a>
-		</div>
-    <ul>
-      <li th:each="movie : ${movies}">
-        <a th:href="@{'/movies' + '/' + ${movie.id}}"
-           th:text="${movie.title} + ' (' + ${movie.year} + ')'">Up! (2000)</a>
-        <a th:href= "@{'/admin/formUpdateMovie' + '/' + ${movie.id}}"> Aggiorna Film</a>
-      </li>
-    </ul>
+    <header>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><div th:if="${userDetails}">
+                <span th:text="${userDetails.username}"></span>
+                <a href="/logout">Logout</a>
+            </div>
+                <div th:unless="${user}">
+                    <a href="/login">Login</a>
+                </div>
+            </li>
+            <li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
+        </ul>
+    </header>
+    <section>
+        <a href="/static"><img src="/images/logo2.png" width="30%" class="center"/></a>
+        <div th:if="${movies.isEmpty()}">
+            <a href="formNewMovie">Non ci sono film nel sistema, clicca qui per aggiungerne uno</a>
+        </div>
+        <ul>
+            <li th:each="movie : ${movies}">
+                <a th:href="@{'/movies' + '/' + ${movie.id}}"
+                   th:text="${movie.title} + ' (' + ${movie.year} + ')'">Up! (2000)</a>
+                <a th:href= "@{'/admin/formUpdateMovie' + '/' + ${movie.id}}"> Aggiorna Film</a>
+            </li>
+        </ul>
+    </section>
     </body>
 </html>

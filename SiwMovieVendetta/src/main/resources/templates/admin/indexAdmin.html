@@ -10,36 +10,42 @@
 
 <body>
 	<header>
-		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${user}">
-			<a href="/login">Login</a>
-		</div>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><div th:if="${userDetails}">
+				<span th:text="${userDetails.username}"></span>
+				<a href="/logout">Logout</a>
+			</div>
+				<div th:unless="${user}">
+					<a href="/login">Login</a>
+				</div>
+			</li>
+			<li><a th:href="@{/register}" th:text="Registrati">Registrati</a></li>
+		</ul>
 	</header>
-
-	<div><img src="/images/logo2.png" width="30%" /></div>
-	<h1>Consulta l'archivio</h1>
-	<div>
-		<a href="/indexMovie">Elenco Film</a>
-	</div>
-	<div>
-		<a href="/indexArtist">Elenco Artisti</a>
-	</div>
-	<h1>Operazioni per amministratore</h1>
-	<div>
-		<a href="/admin/formNewMovie">Aggiungi film</a>
-	</div>
-	<div>
-		<a href="/admin/formNewArtist">Aggiungi artista</a>
-	</div>
-	<div>
-		<a href="/admin/manageMovies">Gestisci film</a>
-	</div>
-	<div>
-		<a href="/admin/manageActors">Gestisci artisti</a>
-	</div>
+	<section>
+		<img src="/images/logo2.png" width="20%"/>
+		<h1>Consulta l'archivio</h1>
+		<div>
+			<a href="/indexMovie">Elenco Film</a>
+		</div>
+		<div>
+			<a href="/indexArtist">Elenco Artisti</a>
+		</div>
+		<h1>Operazioni per amministratore</h1>
+		<div>
+			<a href="/admin/formNewMovie">Aggiungi film</a>
+		</div>
+		<div>
+			<a href="/admin/formNewArtist">Aggiungi artista</a>
+		</div>
+		<div>
+			<a href="/admin/manageMovies">Gestisci film</a>
+		</div>
+		<div>
+			<a href="/admin/manageActors">Gestisci artisti</a>
+		</div>
+	</section>
 </body>
 
 </html>

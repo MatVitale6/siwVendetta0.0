@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.MovieValidator;
-import it.uniroma3.siw.controller.validator.ReviewValidator;
 import it.uniroma3.siw.model.Artist;
 import it.uniroma3.siw.model.Movie;
 import it.uniroma3.siw.model.Review;
@@ -34,7 +33,6 @@ public class MovieController {
 	@Autowired MovieValidator movieValidator;
 	@Autowired ArtistRepository artistRepository;
 	@Autowired ReviewRepository reviewRepository;
-	@Autowired ReviewValidator reviewValidator;
 	@Autowired CredentialsService credentialsService;
 	@Autowired ReviewService reviewService;
 	
@@ -80,7 +78,7 @@ public class MovieController {
 		model.addAttribute("movie", this.movieService.findMovieByID(id));
 		model.addAttribute("review", new Review());
 		model.addAttribute("credentials", this.getCredentials());
-		if(this.getCredentials() != null) {
+		if(this.getCredentials().getUser().getId() != null) {
 			model.addAttribute("giaRecensito", this.reviewService.existReviewByWriterAndFilm(id, this.getCredentials().getUser().getId()));
 		}
 		return "/movie.html";

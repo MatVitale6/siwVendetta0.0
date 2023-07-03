@@ -64,10 +64,18 @@ h2{
 	text-decoration: none;
 	color: #ff8000;
 	font-size: 150%;
+	margin-left:30%;
+	margin-right:30%;
+	border:thick double darkgreen ;
+	border-radius: 20px;
+	background-color: #ccde9c;
 }
 li{
 	font-size: 25px;
 	color: darkgreen;
+}
+span {
+	color: red;
 }
 form{
 	margin-top: 2%;

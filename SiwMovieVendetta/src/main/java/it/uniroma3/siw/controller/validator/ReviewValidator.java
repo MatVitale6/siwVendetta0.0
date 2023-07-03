@@ -13,8 +13,7 @@ import it.uniroma3.siw.repository.ReviewRepository;
 @Component
 public class ReviewValidator implements Validator{
 
-	@Autowired
-	private ReviewRepository reviewRepository;
+	@Autowired private ReviewRepository reviewRepository;
 	
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -24,8 +23,8 @@ public class ReviewValidator implements Validator{
 	@Override
 	public void validate(Object o, Errors errors) {
 		Review review = (Review)o;
-		if(review.getTitle()!=null && review.getVote()!=null 
-				&& reviewRepository.existsByTitleAndVote(review.getTitle(), review.getVote())) {
+		if(review.getReviewed()!=null && review.getWriter()!=null
+				&& reviewRepository.existsByWriterAndFilm(review.getWriter(), review.getReviewed())) {
 			errors.reject("review.duplicate");
 		}
 	}
